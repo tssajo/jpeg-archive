@@ -1,4 +1,5 @@
-# Win32 Makefile created by Zoltan Frombach <tssajo@gmail.com>
+# Win32 Makefile to be used with Visual Studio 2017
+# created by Zoltan Frombach <tssajo@gmail.com>
 
 CC = cl
 CFLAGS = -I. -I./src -I../mozjpeg -I../mozjpeg/build -DHAVE_CONFIG_H -D_CONSOLE /W2 /O2 /DNDEBUG /nologo
@@ -22,7 +23,9 @@ jpeg-hash: jpeg-hash.obj src/util.obj src/hash.obj
 
 test: test/test.obj src/util.obj src/edit.obj src/hash.obj
 	$(CC) $(CFLAGS) /Fetest/test.exe test.obj util.obj edit.obj hash.obj $(LIBJPEG) $(LDFLAGS) /link $(LDLIBS)
-	./test.exe
+	./test/test.exe
 
 clean:
-	del *.obj src/*.obj *.exe
+	del /Q jpeg-recompress.exe jpeg-recompress.obj jpeg-compare.exe jpeg-compare.obj jpeg-hash.exe jpeg-hash.obj
+	del /Q jpeg-recompress.exp jpeg-compare.exp jpeg-recompress.lib jpeg-compare.lib
+	del /Q util.obj edit.obj smallfry.obj hash.obj test.obj test/test.exe
