@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <float.h>
+#include <limits.h>
 
 #include "src/edit.h"
 #include "src/iqa/include/iqa.h"
